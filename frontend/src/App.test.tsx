@@ -4,14 +4,15 @@ import { describe, expect, it } from "vitest";
 import App from "./App";
 
 describe("App", () => {
-  it("renders the phase 0 placeholder", () => {
+  it("redirects unauthenticated users to login", () => {
     render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={["/"]}>
         <App />
       </MemoryRouter>,
     );
     expect(
-      screen.getByRole("heading", { name: "Healthcare Appointment Manager" }),
+      screen.getByRole("heading", { name: /sign in/i }),
     ).toBeInTheDocument();
   });
 });
+
